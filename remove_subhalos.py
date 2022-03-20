@@ -33,12 +33,13 @@ with h5py.File(fname, "r") as fin:
      m_rs = mass[sort_key[::-1]]
      r_rs = radius[sort_key[::-1]] /1000
      pos_rs = pos[sort_key[::-1]] * a 
+     
      #print(m_rs, r_rs)
      #print(pos_rs)
+     
      #check sorting
      #j = 407
      #print(m_rs[j], r_rs[j], pos_rs[j])
-     
      #i = np.where(mass == m_rs[j])
      #print(mass[i], radius[i], pos[i])
      '''i = 0
@@ -47,14 +48,14 @@ with h5py.File(fname, "r") as fin:
      print(len(pos),len(pos_rs[idx]))
      print(idx)
      print(idx[1:])
-     
      m_rs = np.delete(m_rs, idx[1:])
      r_rs = np.delete(r_rs, idx[1:])
      pos_rs = np.delete(pos_rs, idx[1:])
      print(len(mass), len(m_rs))'''
+     
      length = len(m_rs)
      print(length)
-     for i in range(0,2):
+     for i in range(0,length):
      	if i < len(m_rs):
      	   print(i)
      	   #print(pos_rs)
