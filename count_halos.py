@@ -1,6 +1,5 @@
 import h5py
 import numpy as np
-import pandas
 import sys
 import mass_from_peakhieght as mfp
 from scipy.spatial import KDTree
@@ -30,16 +29,14 @@ def remove_subhalos(pos, mass, radius):
      sort_key = mass.argsort()
      
      m_rs = mass[sort_key[::-1]]
-     r_rs = radius[sort_key[::-1]] /1000
-     pos_rs = pos[sort_key[::-1]] * a 
+     r_rs = radius[sort_key[::-1]] /1000  # radius was in units of pkpc/h
+     pos_rs = pos[sort_key[::-1]] * a     #position was in units of cMpc/h
      
      length = len(m_rs)
      print(length)
      for i in range(0,length):
      	print(i)
      	if i < len(m_rs):
-     	   #print(pos_rs)
-     	   #print(pos_rs[i])
      	   
      	   T = KDTree(pos_rs[i:])
      	   idx = T.query_ball_point(pos_rs[i],r=r_rs[i], return_sorted=True)
@@ -110,23 +107,7 @@ with h5py.File(fname, "r") as fin:
      	   idx = (mass>mval[i]) & (mass<mval[i+1])
      	   print(np.sum(idx))
      	
-'''idx = (mass>mval[0]) & (mass<mval[1])
-	     	print(np.sum(idx))
-	     	
-	     	idx = (mass>mval[1]) & (mass<mval[2])
-	     	print(np.sum(idx))
-	     	
-	     	idx = (mass>mval[2]) & (mass<mval[3])
-	     	print(np.sum(idx))
-	     	
-	     	idx = (mass>mval[3]) & (mass<mval[4])
-	     	print(np.sum(idx))
-	     	
-	     	idx = (mass>mval[4]) & (mass<mval[5])
-	     	print(np.sum(idx))
-	     	
-	     	idx = (mass>mval[5]) & (mass<mval[6])
-	     	print(np.sum(idx))'''
+
      	
      	
      	
